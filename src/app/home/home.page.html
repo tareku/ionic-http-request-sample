@@ -7,7 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div id="container">
-    <ion-button expand="block">Load Pokémons</ion-button>
-  </div>
+  <ion-list *ngIf="pokedex != null">
+    <ion-item *ngFor="let pokemon of pokedex.results">
+      <ion-label>{{pokemon.name}}</ion-label>
+    </ion-item>    
+  </ion-list>
+  <ion-button expand="block" (click)="loadPokemons(pokedex.next)">Load Pokémons</ion-button>
 </ion-content>
